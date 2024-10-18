@@ -1,8 +1,23 @@
 <html>
   <body>
-    <button onclick="Puck.setTime()">
-      Set Time
-    </button>
+    <button onclick="Puck.setTime()">Set Time</button>
+    <button onclick="Puck.write('Bange.buzz()\n')">Test Trigger</button>
+    <button onclick="wrtieFile()">Write File</button>
+    <button onclick="readFile()">Read Settings</button>
+    <p id="contents">Nothing Here</p>
     <script src="https://www.puck-js.com/puck.js"> </script>
+    <script>
+      function writefile()
+      {
+          Puck.write('require("Storage").write("a_file","Hello World")\n')
+      }
+      function reacfile()
+      {
+          Puck.eval('require("Storage").read("settings.json")',function(data)
+                    {
+                      document.getElementById("contents").innerHTML = JSON.stringify(data);
+                    });
+      }
+    </script>
   </body>
 </html>
